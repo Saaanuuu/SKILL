@@ -21,7 +21,15 @@ if (isset($_POST['tambah'])) {
   if ($judul_materi) {
     if ($aksi == 'ganti') {
       $id_materi = $_GET['id_materi'];
-      $query = "UPDATE admin_materi set judul_materi = '$judul_materi', deskripsi_materi = '$deskripsi_materi', mentor_materi = '$mentor_materi', harga_materi = '$harga_materi', gambar_materi = '$gambar_materi', sertif_materi = '$sertif_materi' WHERE id_materi = '$id_materi'";
+      $query = "UPDATE admin_materi SET 
+      judul_materi = '$judul_materi', 
+      deskripsi_materi = '$deskripsi_materi', 
+      mentor_materi = '$mentor_materi', 
+      harga_materi = '$harga_materi', 
+      gambar_materi = '$gambar_materi', 
+      sertif_materi = '$sertif_materi' 
+      WHERE id_materi = '$id_materi'";
+
       $sql = mysqli_query($koneksi, $query);
 
       if ($sql) {
@@ -36,8 +44,16 @@ if (isset($_POST['tambah'])) {
               </script>";
       }
     } else {
-      $query = "INSERT INTO admin_materi VALUES ('', '$judul_materi', '$deskripsi_materi', '$mentor_materi', '$harga_materi', '$gambar_materi', '$sertif_materi'";
+      $query = "INSERT INTO admin_materi VALUES 
+      ('', '$judul_materi', 
+      '$deskripsi_materi', 
+      '$mentor_materi', 
+      '$harga_materi', 
+      '$gambar_materi', 
+      '$sertif_materi')";
+
       $sql = mysqli_query($koneksi, $query);
+
       if ($sql) {
         echo "<script>
                 alert('Data Berhasil Ditambah');

@@ -3,8 +3,6 @@ session_start();
 include '../koneksi.php';
 $id = $_SESSION['admin'];
 $id_materi = $_GET['id_materi'];
-// $id_materiElearning = $_GET['id_materiElearning'];
-
 
 if (isset($_GET['aksi'])) {
   $aksi = $_GET['aksi'];

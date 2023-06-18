@@ -11,7 +11,7 @@ if (isset($_GET['aksi'])) {
 }
 
 if ($aksi  == "hapus") {
-  $id_materiElearning  = $_GET['id_materiElearning'];
+  $id_videoElearning  = $_GET['id_videoElearning'];
   $query = "DELETE FROM video_elearning WHERE id_videoElearning  = $id_videoElearning ";
   $sql = mysqli_query($koneksi, $query);
 
@@ -90,7 +90,7 @@ if ($aksi  == "hapus") {
           $sql = mysqli_query($koneksi, $query);
           $i = 1;
           while ($result = mysqli_fetch_assoc($sql)) {
-            $id_materiElearning = $result['id_materiElearning'];
+            $id_videoElearning = $result['id_videoElearning'];
             $judul_videoElearning = $result['judul_videoElearning'];
             $link_videoElearning = $result['link_videoElearning'];
           ?>
@@ -101,7 +101,7 @@ if ($aksi  == "hapus") {
                 </svg>
                 <span><?php echo $i . ". " . $judul_videoElearning; ?></span>
               </div>
-              <button type="submit" name="aksi" value="hapus"><a href="Isi Materi-Elearning.php?aksi=hapus&id_materiElearning=<?php echo $result['id_materiElearning']; ?>&id_materi=<?php echo $id_materi ?>">Delete</a></button>
+              <button type="submit" name="aksi" value="hapus"><a href="Isi Materi-Elearning.php?aksi=hapus&id_videoElearning=<?php echo $result['id_videoElearning']; ?>&id_materiElearning=<?php echo $id_materiElearning ?>">Delete</a></button>
             </li>
           <?php
             $i++;
@@ -109,7 +109,7 @@ if ($aksi  == "hapus") {
           ?>
         </ul>
         <div class="button-add">
-          <button type="submit"><a href="TambahVideo.php?id_materi=<?php echo $id_materi ?>&id_materiElearning=<?php echo $result['id_materiElearning']; ?>">Tambah Video</a></button>
+          <button type="submit"><a href="TambahVideo.php?id_materiElearning=<?php echo $id_materiElearning; ?>">Tambah Video</a></button>
         </div>
       </div>
     </section>
