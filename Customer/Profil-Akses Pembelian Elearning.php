@@ -101,34 +101,30 @@ if (isset($_SESSION['customer'])) {
             </div>
             <hr>
             <div class="program-content">
-              <div class="materi-content">
-                <a href="">
-                  <img src="../Image/1.png" alt="">
-                  <h3>Digital Marketing</h3>
-                  <p>Mentor</p>
-                </a>
-              </div>
-              <div class="materi-content">
-                <a href="">
-                  <img src="../Image/2.png" alt="">
-                  <h3>Data Science & Data Analysis</h3>
-                  <p>Mentor</p>
-                </a>
-              </div>
-              <div class="materi-content">
-                <a href="">
-                  <img src="../Image/3.png" alt="">
-                  <h3>Career & Self Development</h3>
-                  <p>Mentor</p>
-                </a>
-              </div>
-              <div class="materi-content">
-                <a href="">
-                  <img src="../Image/3.png" alt="">
-                  <h3>Career & Self Development</h3>
-                  <p>Mentor</p>
-                </a>
-              </div>
+              <?php
+              $query = "SELECT * FROM admin_materi";
+              $sql = mysqli_query($koneksi, $query);
+              while ($result = mysqli_fetch_assoc($sql)) {
+                $id_materi = $result['id_materi'];
+                $gambar_materi = $result['gambar_materi'];
+                $judul_materi = $result['judul_materi'];
+                $mentor_materi = $result['mentor_materi'];
+              ?>
+                <div class="materi-content">
+                  <a href="Materi Elearning.php?id_materi=<?php echo $id_materi; ?>">
+                    <img src="../Gambar/<?php echo $result['gambar_materi']; ?>" alt="" />
+                    <h3>
+                      <?php echo $result['judul_materi']; ?>
+                    </h3>
+                    <br>
+                    <p>
+                      <?php echo $result['mentor_materi']; ?>
+                    </p>
+                  </a>
+                </div>
+              <?php
+              }
+              ?>
               <!-- <div class="elearning-container">
                         <h2>Oops, Sepertinya Kamu Belum Berlangganan</h2>
                         <p>Ayoo mulai berlangganan sekarang, akses semua materi Skill+</p>

@@ -71,64 +71,53 @@ $id_materi = $_GET['id_materi'];
       <?php
       $query = "SELECT * FROM admin_materi WHERE id_materi = '$id_materi'";
       $sql = mysqli_query($koneksi, $query);
-      while ($result = mysqli_fetch_assoc($sql)) {
+      $result = mysqli_fetch_assoc($sql);
       ?>
-        <div class="title">
-          <h2 class="hero-title"><?php echo $result['judul_materi']; ?></h2>
-          <p class="hero-description">🎯 <?php echo $result['deskripsi_materi']; ?></p>
-          <p class="hero-description">🎯 <?php echo $result['mentor_materi']; ?></p>
-        </div>
-
-        <div class="button-hero-wrapper">
-          <a href="#marketing-management">
-            <button class="button-hero-primary">Lihat Materi</button>
-          </a>
-        </div>
-        <div class="card-hero-wrapper">
-          <div class="card-hero">
-            <div class="card-hero-header">
-              <h4 class="card-hero-title">Materi</h4>
-            </div>
-
-            <hr class="card-hero-divider">
-
-            <div class="card-hero-body">
-              <p class="card-hero-description">
-                <?php echo $result['deskripsi_materi']; ?>
-              </p>
-            </div>
+      <div class="title">
+        <h2 class="hero-title"><?php echo $result['judul_materi']; ?></h2>
+        <p class="hero-description">🎯 <?php echo $result['deskripsi_materi']; ?></p>
+        <p class="hero-description">🎯 <?php echo $result['mentor_materi']; ?></p>
+      </div>
+      <div class="button-hero-wrapper">
+        <a href="#marketing-management">
+          <button class="button-hero-primary">Lihat Materi</button>
+        </a>
+      </div>
+      <div class="card-hero-wrapper">
+        <div class="card-hero">
+          <div class="card-hero-header">
+            <h4 class="card-hero-title">Materi</h4>
           </div>
-          <div class="card-hero">
-            <div class="card-hero-header">
-              <h4 class="card-hero-title">Benefit</h4>
-            </div>
-
-            <hr class="card-hero-divider">
-
-            <div class="card-hero-body">
-              <p class="card-hero-description">
-                Dapatkan Sertifikat tiap menyelesaikan materi. Modul Praktik untuk Portfolio. Pre & Post Test untuk uji pemahaman. Gabung Grup Komunitas untuk berdiskusi. Short Class Gratis Bulanan yang bersertifikat.
-              </p>
-            </div>
-          </div>
-
-          <div class="card-hero">
-            <div class="card-hero-header">
-              <h4 class="card-hero-title">Persyaratan</h4>
-            </div>
-
-            <hr class="card-hero-divider">
-
-            <div class="card-hero-body">
-              <p class="card-hero-description">
-                Tidak harus mulai dari paham basic marketing. Experts akan mengajarimu dari level dasar hingga lanjut dengan kombinasi konsep, studi kasus dan praktik. Video bisa dipelajari dengan berbagai device.
-              </p>
-            </div>
+          <hr class="card-hero-divider">
+          <div class="card-hero-body">
+            <p class="card-hero-description">
+              <?php echo $result['deskripsi_materi']; ?>
+            </p>
           </div>
         </div>
-      <?php
-      }
-      ?>
+        <div class="card-hero">
+          <div class="card-hero-header">
+            <h4 class="card-hero-title">Benefit</h4>
+          </div>
+          <hr class="card-hero-divider">
+          <div class="card-hero-body">
+            <p class="card-hero-description">
+              Dapatkan Sertifikat tiap menyelesaikan materi. Modul Praktik untuk Portfolio. Pre & Post Test untuk uji pemahaman. Gabung Grup Komunitas untuk berdiskusi. Short Class Gratis Bulanan yang bersertifikat.
+            </p>
+          </div>
+        </div>
+        <div class="card-hero">
+          <div class="card-hero-header">
+            <h4 class="card-hero-title">Persyaratan</h4>
+          </div>
+          <hr class="card-hero-divider">
+          <div class="card-hero-body">
+            <p class="card-hero-description">
+              Tidak harus mulai dari paham basic marketing. Experts akan mengajarimu dari level dasar hingga lanjut dengan kombinasi konsep, studi kasus dan praktik. Video bisa dipelajari dengan berbagai device.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="progress">
@@ -162,16 +151,29 @@ $id_materi = $_GET['id_materi'];
         </h2>
       </div>
       <div class="marketing-management-card-wrapper">
-        <div class="marketing-management-card">
-          <a href="Isi Materi-Elearning.html">
-            <div class="marketing-management-card-image">
-              <img src="../Image/1.png" alt="Gambar">
-            </div>
-            <div class="marketing-management-card-body">
-              <h4 class="marketing-management-card-title">Marketing Introduction</h4>
-            </div>
-          </a>
-        </div>
+        <?php
+        $query = "SELECT * FROM materi_elearning WHERE id_materi = $id_materi";
+        $sql = mysqli_query($koneksi, $query);
+        while ($result = mysqli_fetch_assoc($sql)) {
+          $id_materi = $_GET['id_materi'];
+          $id_materiElearning = $result['id_materiElearning'];
+          $judul_materiElearning = $result['judul_materiElearning'];
+          $deskripsi_materiElearning = $result['deskripsi_materiElearning'];
+          $gambar_materiElearning = $result['gambar_materiElearning'];
+        ?>
+          <div class="marketing-management-card">
+            <a href="Isi Materi-Elearning.php?id_materiElearning=<?php echo $id_materiElearning; ?>">
+              <div class="marketing-management-card-image">
+                <img src="../Gambar/<?php echo $result['gambar_materiElearning']; ?>" alt="" />
+              </div>
+              <div class="marketing-management-card-body">
+                <h4 class="marketing-management-card-title"><?php echo $judul_materiElearning; ?></h4>
+              </div>
+            </a>
+          </div>
+        <?php
+        }
+        ?>
       </div>
     </section>
   </main>

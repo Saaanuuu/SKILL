@@ -80,7 +80,7 @@ if (isset($_POST['tambah'])) {
 
 if ($aksi  == "hapus") {
   $id_bootcamp = $_GET['id_bootcamp'];
-  $query = "DELETE FROM admin_bootcamp WHERE `admin_bootcamp`.`id_bootcamp` = $id_bootcamp";
+  $query = "DELETE FROM admin_bootcamp WHERE `admin_bootcamp`.`id_bootcamp` = '$id_bootcamp'";
   $sql = mysqli_query($koneksi, $query);
 
   if ($sql) {
@@ -142,6 +142,7 @@ if ($aksi  == "hapus") {
     </div>
   </div>
   <!-- Navbar Selesai -->
+
   <!-- Content -->
   <div class="content">
     <div class="container">
@@ -168,11 +169,12 @@ if ($aksi  == "hapus") {
               <h3><?php echo $result['judul_bootcamp']; ?></h3>
               <br>
               <div class="description">
-                <img src="./Image/calendar.png" alt="">
+                <img src="../Image/calendar.png" alt="">
                 <p><?php echo $result['tanggal_bootcamp']; ?></p>
               </div>
+              <br>
               <div class="description">
-                <img src="./Image/shopping.png" alt="">
+                <img src="../Image/shopping.png" alt="">
                 <p><?php echo $result['harga_bootcamp']; ?></p>
               </div>
               <br>

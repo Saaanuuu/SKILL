@@ -100,17 +100,30 @@ if (isset($_SESSION['customer'])) {
             </div>
             <hr>
             <div class="program-content">
-              <div class="section-program">
-                <a href="">
-                  <img src="../Image/DESAIN GRAFIS.png" alt="Poster">
-                  <h3>Program Bootcamp</h3>
-                  <br>
-                  <div class="description">
-                    <img src="../Image/calendar.png" alt="">
-                    <p>Tanggal Bootcamp</p>
-                  </div>
-                </a>
-              </div>
+            <?php
+              $query = "SELECT * FROM admin_bootcamp";
+              $sql = mysqli_query($koneksi, $query);
+              while ($result = mysqli_fetch_assoc($sql)) {
+                $id_materi = $result['id_bootcamp'];
+                $gambar_materi = $result['gambar_bootcamp'];
+                $judul_materi = $result['judul_bootcamp'];
+                $tanggal_bootcamp = $result['tanggal_bootcamp'];
+              ?>
+                <div class="materi-content">
+                  <a href="Materi Elearning.php?id_materi=<?php echo $id_materi; ?>">
+                    <img src="../Gambar/<?php echo $result['gambar_bootcamp']; ?>" alt="" />
+                    <h3>
+                      <?php echo $result['judul_bootcamp']; ?>
+                    </h3>
+                    <br>
+                    <p>
+                      <?php echo $result['tanggal_bootcamp']; ?>
+                    </p>
+                  </a>
+                </div>
+              <?php
+              }
+              ?>
               <!-- <div class="program-container">
                       <h2>Oops, Sepertinya Kamu Belum Berlangganan</h2>
                       <button><a href="">Mulai Berlangganan</a></button>

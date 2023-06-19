@@ -20,7 +20,12 @@ if (isset($_POST['tambah'])) {
   if ($judul_materiElearning) {
     if ($aksi == 'ganti') {
       $id_materiElearning = $_GET['id_materiElearning'];
-      $query = "UPDATE materi_elearning set judul_materiElearning = '$judul_materiElearning', deskripsi_materiElearning = '$deskripsi_materiElearning', link_materiElearning = '$link_materiElearning' WHERE id_materi = '$id_materi'";
+      $query = "UPDATE materi_elearning SET 
+      judul_materiElearning = '$judul_materiElearning', 
+      deskripsi_materiElearning = '$deskripsi_materiElearning', 
+      link_materiElearning = '$link_materiElearning' 
+      WHERE id_materi = '$id_materi'";
+      
       $sql = mysqli_query($koneksi, $query);
 
       if ($sql) {

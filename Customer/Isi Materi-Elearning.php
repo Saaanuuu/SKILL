@@ -1,3 +1,10 @@
+<?php
+session_start();
+include '../koneksi.php';
+$id = $_SESSION['customer'];
+$id_materiElearning = $_GET['id_materiElearning'];
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -14,28 +21,38 @@
         <a href="">Skill+</a>
       </div>
       <div class="menu-container">
-        <a href="Home-Logined.html">Home</a>
-        <a href="E-Learning.html">E-Learning</a>
-        <a href="Bootcamp.html">Bootcamp & Program</a>
+        <a href="Home-Logined.php">Home</a>
+        <a href="E-Learning.php">E-Learning</a>
+        <a href="Bootcamp.php">Bootcamp & Program</a>
         <a href="#about">About</a>
       </div>
       <div class="profile-container">
         <a href="#none">
-          <h3 onclick="toogleMenu()">Nama User</h3>
+          <?php
+          $query = "SELECT * FROM actor WHERE id = $id ";
+          $sql = mysqli_query($koneksi, $query);
+          $result = mysqli_fetch_assoc($sql);
+          ?>
+          <h3 onclick="toogleMenu()"><?php echo $result['username'] ?></h3>
         </a>
       </div>
       <div class="sub-menu-wrap" id="subMenu">
         <div class="sub-menu">
           <div class="user-info">
-            <h2>Nama User</h2>
+            <?php
+            $query = "SELECT * FROM actor WHERE id = $id ";
+            $sql = mysqli_query($koneksi, $query);
+            $result = mysqli_fetch_assoc($sql);
+            ?>
+            <h2><?php echo $result['username'] ?></h2>
           </div>
           <hr>
-          <a href="Profil-Profil Saya.html" class="sub-menu-link">
+          <a href="Profil-Profil Saya.php" class="sub-menu-link">
             <img src="../Image/profile.png">
             <p>Edit Profile</p>
             <span>></span>
           </a>
-          <a href="Masuk.html" class="sub-menu-link">
+          <a href="../Keluar.php" class="sub-menu-link">
             <img src="../Image/logout.png">
             <p>Logout</p>
             <span>></span>
@@ -50,55 +67,58 @@
   <main class="content">
     <section class="course-video-wrapper">
       <div class="course-video-player">
-        <iframe width="100%" height="415" src="https://www.youtube.com/embed/czubWNv8MYk" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen id="yt-video"></iframe>
+        <iframe width="100%" height="415" src="https://www.youtube.com/embed/czubWNv8MYk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="yt-video"></iframe>
       </div>
 
       <div class="course-video-list-wrapper">
         <p class="course-video-list-title">Materi</p>
 
         <ul class="course-video-list">
-          <li class="course-video-list-item" data-href="https://www.youtube.com/embed/czubWNv8MYk">
-            <div class="course-play-item">
-              <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium mui-style-1dtrpo5" focusable="false"
-                aria-hidden="true" viewBox="0 0 24 24" data-testid="PlayCircleOutlinedIcon">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5 7-4.5-7-4.5v9z">
-                </path>
-              </svg>
-              <span>1. Introduction</span>
-            </div>
-            <input type="checkbox" name="video">
-          </li>
+          <?php
+          $query = "SELECT * FROM video_elearning WHERE id_materiElearning = $id_materiElearning";
+          $sql = mysqli_query($koneksi, $query);
+          $i = 1;
+          while ($result = mysqli_fetch_assoc($sql)) {
+            $id_videoElearning = $result['id_videoElearning'];
+            $judul_videoElearning = $result['judul_videoElearning'];
+            $link_videoElearning = $result['link_videoElearning'];
+          ?>
+            <li class="course-video-list-item" data-href="<?php echo htmlspecialchars($link_videoElearning); ?>">
+              <div class="course-play-item">
+                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium mui-style-1dtrpo5" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PlayCircleOutlinedIcon">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5 7-4.5-7-4.5v9z"></path>
+                </svg>
+                <span><?php echo $i . ". " . $judul_videoElearning; ?></span>
+              </div>
+              <input type="checkbox" name="video">
 
-          <li class="course-video-list-item" data-href="https://www.youtube.com/embed/wfAFv6ikmkE">
-            <div class="course-play-item">
-              <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium mui-style-1dtrpo5" focusable="false"
-                aria-hidden="true" viewBox="0 0 24 24" data-testid="PlayCircleOutlinedIcon">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5 7-4.5-7-4.5v9z">
-                </path>
-              </svg>
-              <span>2. Introduction to Marketing</span>
-            </div>
-            <input type="checkbox" name="video">
-          </li>
+            </li>
+          <?php
+            $i++;
+          }
+          ?>
         </ul>
       </div>
     </section>
 
     <section class="course-information">
+      <?php
+      $query = "SELECT * FROM materi_elearning WHERE id_materiElearning = '$id_materiElearning'";
+      $sql = mysqli_query($koneksi, $query);
+      $result = mysqli_fetch_assoc($sql);
+      $id_materiElearning = $result['id_materiElearning'];
+      $judul_materiElearning = $result['judul_materiElearning'];
+      $deskripsi_materiElearning = $result['deskripsi_materiElearning'];
+      ?>
       <div class="course-information-header">
         <div>
           <h2 class="course-information-title">
-            Judul Materi
+            <?php echo $result['judul_materiElearning']; ?>
           </h2>
         </div>
       </div>
       <p class="course-information-description">
-        Deskripsi Materi
+        <?php echo $result['deskripsi_materiElearning']; ?>
       </p>
     </section>
   </main>
@@ -160,7 +180,7 @@
     const listVideo = document.getElementsByClassName("course-video-list-item");
 
     for (let i = 0; i <= listVideo.length; i++) {
-      listVideo[i].addEventListener("click", function (e) {
+      listVideo[i].addEventListener("click", function(e) {
         const linkIframe = listVideo[i].getAttribute('data-href');
 
         document.getElementById('yt-video').setAttribute("src", linkIframe);

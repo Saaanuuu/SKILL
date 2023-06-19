@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../koneksi.php';
-$id = $_SESSION['admin'];
+$id = $_SESSION['mentor'];
 $id_materiElearning = $_GET['id_materiElearning'];
 
 if (isset($_GET['aksi'])) {
@@ -44,7 +44,6 @@ if ($aksi  == "hapus") {
       <div class="menu-container">
         <a href="Admin-user.php">User</a>
         <a href="Admin-Elearning.php">E-Learning</a>
-        <a href="Admin-Bootcamp.php">Bootcamp & Program</a>
         <a href="Admin-RiwayatPembayaran.php">Riwayat Pembayaran</a>
       </div>
       <div class="profile-container">

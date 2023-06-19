@@ -90,7 +90,7 @@ $id = $_SESSION['customer'];
         <h2>Upload Bukti Pembayaran</h2>
         <input type="file">
         <br>
-        <button><a href="Materi-Bootcamp.php?id_bootcamp=<?php echo $id_bootcamp; ?>">Ok</button></a>
+        <button type="submit"><a href="https://chat.whatsapp.com/DA2Sppa0GIT0J5dj86lj6W">Ok</button></a>
       </div>
     </div>
   </div>

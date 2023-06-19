@@ -2,8 +2,10 @@
 session_start();
 include '../koneksi.php';
 $id = $_SESSION['customer'];
+$id_materi = $_GET['id_materi'];
 
 if (isset($_SESSION['customer'])) {
+
 ?>
 
 
@@ -72,8 +74,8 @@ if (isset($_SESSION['customer'])) {
         <div class="payment">
           <?php
           if (isset($_GET['id_materi'])) {
-            $id_materi = $_GET['id_materi'];
-            $query = "SELECT * FROM admin_materi WHERE id_materi = $id_materi";
+            // $id_materi = $_GET['id_materi'];
+            $query = "SELECT admin_materi.harga_materi, pembayaran.id_pembayaran, pembayaran.bukti_pembayaran FROM admin_materi, pembayaran WHERE admin_materi.id_materi = $id_materi";
             $sql = mysqli_query($koneksi, $query);
             $result = mysqli_fetch_assoc($sql);
             $harga_materi = $result['harga_materi'];
@@ -90,9 +92,11 @@ if (isset($_SESSION['customer'])) {
           <p>Nomor Rekening</p>
           <h2>1234567800001</h2>
           <h2>Upload Bukti Pembayaran</h2>
-          <input type="file">
-          <br>
-          <button type="button"><a href="Materi-Elearning.php?id_materi=<?php echo $id_materi; ?>">Ok</a></button>
+          <form action="Pembayaran_Elearning.php?aksi=tambah&id_pembayaran=<?php echo $result['id_pembayaran']; ?>&id_materi=<?php echo $id_materi ?>" method="post" enctype="multipart/form-data" name="aksi" value="tambah">
+            <input type="file" name="bukti_pembayaran">
+            <br>
+            <button type="submit">OK</button>
+          </form>
         </div>
       </div>
     </div>

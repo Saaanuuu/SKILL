@@ -143,6 +143,9 @@ a {
   color: #e4d6ff;
 }
 
+/* NAVBAR END */
+
+
 /* Content */
 /* Page 1 CONTENT */
 .content {
@@ -410,48 +413,204 @@ a {
   background-color: #f1ebff;
   transition: 0.5s;
 }
+
+.option button{
+  padding: 100px;
+}
 /*  Marketing Management END */
 /* Page 1 CONTENT END */
 
-
-/*Footer*/
+/* FOOTER */
 
 .footer {
-  background-color: #cda5f3;
+    background-color: #cda5f3;
+    display: flex;
+    justify-content: center;
+    height: 270px;
+  }
+  
+  .footer-container {
+    width: 80%;
+    padding-top: 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+  
+  .about {
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+  }
+  
+  .pembayaran-top {
+    padding-bottom: 10px;
+  }
+  
+  .pembayaran-bot {
+    padding-top: 10px;
+  }
+  
+  .logo-pembayaran {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding: 5px;
+  }
+/* FOOTER END */
+
+
+/* Page 2 Content */
+
+/* Section Course Video Wrapper */
+.course-video-wrapper {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 20px;
+}
+.course-video-player iframe {
+  border-radius: 20px;
+}
+
+.course-video-list-wrapper {
+  height: 415px;
+  max-height: 415px;
+  overflow-y: scroll;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+}
+
+.course-video-list button{
+  padding: 5px;
+  border-radius: 5px;
+  background-color: red;
+  
+}
+
+.button-add {
   display: flex;
   justify-content: center;
-  height: 270px;
 }
 
-.footer-container {
-  width: 80%;
-  padding-top: 20px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 5px;
-  padding-bottom: 15px;
-}
-
-.about {
-  display: flex;
-  justify-content: space-around;
-  width: 75%;
-}
-
-.pembayaran-top {
-  padding-bottom: 10px;
-}
-
-.pembayaran-bot {
-  padding-top: 10px;
-}
-
-.logo-pembayaran {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
+.button-add button{
   padding: 5px;
+  border-radius: 5px;
+  width: 50%;
+  background-color: #c88eff;
 }
+
+.button-add button:hover{
+  font-weight: bold;
+}
+
+.course-video-list-title {
+  font-weight: 600;
+  color: #313A44;
+  padding: 1rem;
+}
+.course-video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 1rem 0;
+}
+.course-play-item {
+  display: flex;
+  align-items: center; 
+  gap: 10px;
+}
+.course-video-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d1d1d1;
+  padding: 5px 1rem;
+  transition: ease 0.2s;
+  cursor: pointer;
+  
+}
+.course-video-list-item:hover {
+  background-color: #d1d1d1;
+}
+.course-video-list-item svg {
+  width: 30px;
+}
+
+
+/* Section Course Video Wrapper END */
+
+/* Section Course Information */
+.course-information {
+  margin: 2rem 0;
+}
+.course-information-breadcumb {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
+}
+.breadcumb-item {
+  padding: 0.4rem;
+  background-color: transparent;
+  color: #1D9BA5;
+  font-weight: 700;
+  border: 1px solid #1D9BA5;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+.breadcumb-active {
+  color: #1D9BA5;
+  font-size: 0.8rem;
+}
+.course-information-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.wishlish-button {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.wishlish-button:hover {
+  background-color: #0a929c1a;
+}
+.wishlish-button svg {
+  width: 25px;
+  height: 25px;
+  fill: #0A929C;
+}
+.course-information-title {
+  font-size: 2.4rem;
+  margin-top: 1rem;
+}
+.course-information-author {
+  font-weight: 500;
+}
+.course-information-description {
+  margin-top: 1rem;
+  font-weight: 400;
+}
+/* Section Course Information END */
+
+.recommend-course-title {
+  font-size: 2.4rem;
+}
+/* Page 2 Content END */
+
+
+/* Section Divider */
+.section-divider {
+  border: 1px solid #d1d1d1;
+}
+/* Section Divider END */
