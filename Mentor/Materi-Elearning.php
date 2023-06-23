@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../koneksi.php';
-$id = $_SESSION['admin'];
+$id = $_SESSION['mentor'];
 $id_materi = $_GET['id_materi'];
 
 if (isset($_GET['aksi'])) {
@@ -119,10 +119,10 @@ if ($aksi  == "hapus") {
             <p>Edit Profile</p>
             <span>></span>
           </a>
-          <a href="Masuk.php" class="sub-menu-link">
+          <a href="../Keluar.php" class="sub-menu-link">
             <img src="../Image/logout.png">
             <p>Logout</p>
-            <span></span>
+            <span>></span>
           </a>
         </div>
       </div>

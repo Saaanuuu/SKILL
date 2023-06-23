@@ -45,7 +45,7 @@ $id = $_SESSION['mentor'];
             <p>Edit Profile</p>
             <span>></span>
           </a>
-          <a href="Masuk.php" class="sub-menu-link">
+          <a href="../Keluar.php" class="sub-menu-link">
             <img src="../Image/logout.png">
             <p>Logout</p>
             <span>></span>
@@ -72,7 +72,7 @@ $id = $_SESSION['mentor'];
           $harga_materi = $result['harga_materi'];
         ?>
           <div class="materi-content">
-            <a href="../Admin/Materi Elearning.php?id_materi=<?php echo $id_materi; ?>">
+            <a href="Materi-Elearning.php?id_materi=<?php echo $id_materi; ?>">
               <img src="../Gambar/<?php echo $result['gambar_materi']; ?>" alt="" /></a>
             <h3>
               <?php echo $result['judul_materi']; ?>

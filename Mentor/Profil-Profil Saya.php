@@ -52,7 +52,7 @@ $id = $_SESSION['mentor'];
             <p>Edit Profile</p>
             <span>></span>
           </a>
-          <a href="Masuk.php" class="sub-menu-link">
+          <a href="../Keluar.php" class="sub-menu-link">
             <img src="../Image/logout.png">
             <p>Logout</p>
             <span>></span>
